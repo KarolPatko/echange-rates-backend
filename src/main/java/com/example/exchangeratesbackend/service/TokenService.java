@@ -3,6 +3,7 @@ package com.example.exchangeratesbackend.service;
 import com.auth0.jwt.JWT;
 import com.example.exchangeratesbackend.dto.LoggedUserDataDto;
 import com.example.exchangeratesbackend.dto.LoginDataDto;
+import com.example.exchangeratesbackend.dto.TokenDto;
 import com.example.exchangeratesbackend.entitie.Token;
 import com.example.exchangeratesbackend.entitie.User;
 import com.example.exchangeratesbackend.error.ResourceNotFound;
@@ -53,6 +54,49 @@ public class TokenService {
         else{
             throw new ResourceNotFound();
         }
+    }
+
+    public TokenDto refresh(TokenDto tokenDto){
+        Token token = tokenRepository.findByJwtAndRefresh(tokenDto.getJwt(), tokenDto.getRefresh());
+
+        if(token == null){
+            throw new ResourceNotFound();
+        }
+
+        String jwt = token.getJwt();
+        String login = JWT.require(HMAC512(SECRET.getBytes()))
+                .build()
+                .verify(jwt)
+                .getSubject();
+
+        User user = userRepository.getByLogin(login);
+
+        if(user == null){
+            throw new ResourceNotFound();
+        }
+
+        token.setAvailable(false);
+        tokenRepository.save(token);
+
+        String newJwt = JWT.create()
+                .withSubject(user.getLogin())
+                .withClaim("role", user.getRole())
+                .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
+                .sign(HMAC512(SECRET.getBytes()));
+
+        String newRefreshToken = getAlphaNumericString(128);
+
+        Token newToken = new Token();
+        newToken.setJwt(newJwt);
+        newToken.setRefresh(newRefreshToken);
+        newToken.setAvailable(true);
+        tokenRepository.save(newToken);
+
+        TokenDto newTokenDto = new TokenDto();
+        newTokenDto.setJwt(newJwt);
+        newTokenDto.setRefresh(newRefreshToken);
+
+        return newTokenDto;
     }
 
 

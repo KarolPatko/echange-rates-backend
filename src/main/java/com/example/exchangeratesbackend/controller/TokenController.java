@@ -21,4 +21,9 @@ public class TokenController {
     public LoggedUserDataDto login(@RequestBody LoginDataDto loginDataDto){
         return tokenService.login(loginDataDto);
     }
+
+    @PostMapping("refresh")
+    public TokenDto refresh(@RequestBody TokenDto TokenDto){
+        return tokenService.refresh(TokenDto);
+    }
 }
