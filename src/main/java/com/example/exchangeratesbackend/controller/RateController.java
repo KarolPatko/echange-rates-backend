@@ -16,12 +16,13 @@ public class RateController {
     RateService rateService;
 
     @PostMapping
-    public void addRate(@RequestBody NewRateDto newRateDto){
-        rateService.addRate(newRateDto);
+    public void addRate(@RequestBody NewRateDto newRateDto,
+                        @RequestParam(name = "force", required = false, defaultValue = "false") Boolean force){
+        rateService.addRate(newRateDto, force);
     }
 
     @DeleteMapping("/{rateId}")
-    public void deleteRate(@PathVariable("rateId") Long rateId){
+    public void deleteRate(@PathVariable("rateId") Long rateId{
         rateService.deleteRate(rateId);
     }
 
