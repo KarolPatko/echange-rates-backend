@@ -1,6 +1,7 @@
 package com.example.exchangeratesbackend.controller;
 
 
+import com.example.exchangeratesbackend.dto.NewActiveDto;
 import com.example.exchangeratesbackend.dto.NewRoleDto;
 import com.example.exchangeratesbackend.dto.NewUserDto;
 import com.example.exchangeratesbackend.entitie.User;
@@ -28,5 +29,10 @@ public class UserController {
     @DeleteMapping("{userId}")
     public void deleteUser(@PathVariable Long userId){
         userService.deleteUser(userId);
+    }
+
+    @PostMapping("{userId}/active")
+    public void changeActive(@PathVariable Long userId, @RequestBody NewActiveDto newActiveDto){
+        userService.changeActive(userId, newActiveDto);
     }
 }

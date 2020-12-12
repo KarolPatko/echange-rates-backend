@@ -1,5 +1,6 @@
 package com.example.exchangeratesbackend.service;
 
+import com.example.exchangeratesbackend.dto.NewActiveDto;
 import com.example.exchangeratesbackend.dto.NewRoleDto;
 import com.example.exchangeratesbackend.dto.NewUserDto;
 import com.example.exchangeratesbackend.entitie.User;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class UserService {
@@ -67,6 +69,17 @@ public class UserService {
         }
 
         userRepository.delete(user);
+    }
+
+    public void changeActive(@PathVariable Long userId, @RequestBody NewActiveDto newActiveDto) {
+        User user = userRepository.getById(userId);
+
+        if(user == null){
+            throw new ResourceNotFound();
+        }
+
+        user.setActive(newActiveDto.isActive());
+        userRepository.save(user);
     }
 
     private boolean isKnownRole(String role){
