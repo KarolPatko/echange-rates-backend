@@ -20,11 +20,9 @@ public class RateController {
         rateService.addRate(newRateDto);
     }
 
-    @DeleteMapping
-    public void deleteRate(@PathParam("rateId") long rateId){
+    @DeleteMapping("/{rateId}")
+    public void deleteRate(@PathVariable("rateId") Long rateId){
         rateService.deleteRate(rateId);
     }
-
-
 
 }
