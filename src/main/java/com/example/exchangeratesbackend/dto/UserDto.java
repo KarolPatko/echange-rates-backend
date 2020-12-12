@@ -1,11 +1,20 @@
 package com.example.exchangeratesbackend.dto;
 
 public class UserDto {
+    private Long id;
     private String name;
     private String lastName;
     private String login;
     private String role;
     private Boolean active;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -50,7 +59,8 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(String name, String lastName, String login, String role, Boolean active) {
+    public UserDto(Long id, String name, String lastName, String login, String role, Boolean active) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.login = login;

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -24,8 +25,8 @@ public class UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public List<UserDto> getAllUsers(){
-        return userRepository.findAllProjectedBy();
+    public List<User> getAllUsers(){
+        return userRepository.findAll().stream().filter(user -> {user.setPassword(""); return true;}).collect(Collectors.toList());
     }
 
     public User register(NewUserDto newUserDto){
