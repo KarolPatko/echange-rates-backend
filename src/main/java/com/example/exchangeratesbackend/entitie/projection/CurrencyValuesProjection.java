@@ -2,8 +2,7 @@ package com.example.exchangeratesbackend.entitie.projection;
 
 import java.time.LocalDate;
 
-public interface CurrencyRateProjection {
-    String getName();
+public interface CurrencyValuesProjection {
     Double getValue();
-    LocalDate date();
+    LocalDate getDate();
 }

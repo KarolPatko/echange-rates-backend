@@ -8,6 +8,9 @@ import com.example.exchangeratesbackend.repository.RateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @Service
 public class RateService {
 
@@ -26,6 +29,16 @@ public class RateService {
         newRate.setValue(newRateDto.getValue());
 
         rateRepository.save(newRate);
+    }
+
+    public void deleteRate(long rateId){
+        Optional<Rate> deleteRate = rateRepository.findById(rateId);
+        if(deleteRate.isPresent()){
+            rateRepository.deleteById(rateId);
+        }else{
+            throw new NoSuchElementException();
+        }
+
     }
 
 }
