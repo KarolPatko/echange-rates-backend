@@ -34,7 +34,7 @@ public class TokenService {
     public LoggedUserDataDto login(LoginDataDto loginDataDto){
         User user = userRepository.getByLogin(loginDataDto.getLogin());
 
-        if(user != null && passwordEncoder.matches(loginDataDto.getPassword(), user.getPassword())){
+        if(user != null && user.getActive() && passwordEncoder.matches(loginDataDto.getPassword(), user.getPassword())){
             String jwt = JWT.create()
                     .withSubject(user.getLogin())
                     .withClaim("role", user.getRole())
