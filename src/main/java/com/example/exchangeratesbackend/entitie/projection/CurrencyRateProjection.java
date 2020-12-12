@@ -5,5 +5,5 @@ import java.time.LocalDate;
 public interface CurrencyRateProjection {
     String getName();
     Double getValue();
-    LocalDate date();
+    LocalDate getDate();
 }
