@@ -8,16 +8,16 @@ public class Token {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
     private String jwt;
     private String refresh;
     private String available;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,7 +48,7 @@ public class Token {
     public Token() {
     }
 
-    public Token(String id, String jwt, String refresh, String available) {
+    public Token(Long id, String jwt, String refresh, String available) {
         this.id = id;
         this.jwt = jwt;
         this.refresh = refresh;

@@ -12,25 +12,25 @@ import java.time.LocalDate;
 public class Rate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
-    private String currencyId;
+    private Long id;
+    private Long currencyId;
     private Double value;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDate date;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getCurrencyId() {
+    public Long getCurrencyId() {
         return currencyId;
     }
 
-    public void setCurrencyId(String currencyId) {
+    public void setCurrencyId(Long currencyId) {
         this.currencyId = currencyId;
     }
 
@@ -53,7 +53,7 @@ public class Rate {
     public Rate() {
     }
 
-    public Rate(String id, String currencyId, Double value, LocalDate date) {
+    public Rate(Long id, Long currencyId, Double value, LocalDate date) {
         this.id = id;
         this.currencyId = currencyId;
         this.value = value;

@@ -9,14 +9,14 @@ import javax.persistence.Id;
 public class Currency {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Long id;
     private String name;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -31,7 +31,7 @@ public class Currency {
     public Currency() {
     }
 
-    public Currency(String id, String name) {
+    public Currency(Long id, String name) {
         this.id = id;
         this.name = name;
     }
