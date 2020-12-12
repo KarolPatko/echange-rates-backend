@@ -62,7 +62,7 @@ public class DataLoader {
         user1.setActive(true);
         user1.setLastName("name");
         user1.setName("lastName");
-        user1.setLogin("login");
+        user1.setLogin("user");
         user1.setRole("USER");
         user1.setPassword(password);
         userRepository.save(user1);
@@ -71,7 +71,7 @@ public class DataLoader {
         user2.setActive(true);
         user2.setLastName("name");
         user2.setName("lastName");
-        user2.setLogin("login");
+        user2.setLogin("admin");
         user2.setRole("ADMIN");
         user2.setPassword(password);
         userRepository.save(user2);

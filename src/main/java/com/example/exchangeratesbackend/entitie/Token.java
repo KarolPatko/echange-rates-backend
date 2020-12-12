@@ -1,9 +1,11 @@
 package com.example.exchangeratesbackend.entitie;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Token {
 
     @Id
@@ -11,7 +13,7 @@ public class Token {
     private Long id;
     private String jwt;
     private String refresh;
-    private String available;
+    private Boolean available;
 
     public Long getId() {
         return id;
@@ -37,18 +39,18 @@ public class Token {
         this.refresh = refresh;
     }
 
-    public String getAvailable() {
+    public Boolean getAvailable() {
         return available;
     }
 
-    public void setAvailable(String available) {
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
 
     public Token() {
     }
 
-    public Token(Long id, String jwt, String refresh, String available) {
+    public Token(Long id, String jwt, String refresh, Boolean available) {
         this.id = id;
         this.jwt = jwt;
         this.refresh = refresh;
