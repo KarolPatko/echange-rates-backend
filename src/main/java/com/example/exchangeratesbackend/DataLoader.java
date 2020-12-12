@@ -26,24 +26,22 @@ public class DataLoader {
     private void loadCurrency(){
         Currency currency = new Currency();
         currency.setName("PLN");
-        currency.setId(new Long(1));
         currencyRepository.save(currency);
     }
 
     private void loadRate(){
-        Rate rate = new Rate();
-        LocalDate localDate = LocalDate.parse("2020-12-12 13:40", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        rate.setDate(localDate);
-        rate.setId(new Long(1));
-        rate.setCurrencyId(new Long(1));
-        rate.setValue(new Double(1));
-        rateRepository.save(rate);
+        Rate rate1 = new Rate();
+        LocalDate localDate1 = LocalDate.parse("2020-12-12 13:40", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        rate1.setDate(localDate1);
+        rate1.setCurrencyId(new Long(1));
+        rate1.setValue(new Double(1));
+        rateRepository.save(rate1);
 
-        localDate = LocalDate.parse("2020-12-12 14:40", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        rate.setDate(localDate);
-        rate.setId(new Long(2));
-        rate.setCurrencyId(new Long(1));
-        rate.setValue(new Double(2));
-        rateRepository.save(rate);
+        Rate rate2 = new Rate();
+        LocalDate localDate2 = LocalDate.parse("2020-12-12 14:40", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        rate2.setDate(localDate2);
+        rate2.setCurrencyId(new Long(1));
+        rate2.setValue(new Double(2));
+        rateRepository.save(rate2);
     }
 }
