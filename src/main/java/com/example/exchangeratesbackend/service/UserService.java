@@ -1,12 +1,15 @@
 package com.example.exchangeratesbackend.service;
 
+import com.example.exchangeratesbackend.dto.NewRoleDto;
 import com.example.exchangeratesbackend.dto.NewUserDto;
 import com.example.exchangeratesbackend.entitie.User;
 import com.example.exchangeratesbackend.error.ResourceConflict;
+import com.example.exchangeratesbackend.error.ResourceNotFound;
 import com.example.exchangeratesbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class UserService {
@@ -39,6 +42,28 @@ public class UserService {
         user.setPassword("");
 
         return user;
+    }
+
+    public void changeRole(Long userId, NewRoleDto newRoleDto){
+        User user = userRepository.getByUserId(userId);
+
+        if(user == null){
+            throw new ResourceNotFound();
+        }
+
+        if(!isKnownRole(newRoleDto.getRole())){
+            throw new ResourceNotFound();
+        }
+
+        user.setRole(newRoleDto.getRole());
+        userRepository.save(user);
+    }
+
+    private boolean isKnownRole(String role){
+        if(!role.equals("USER") && !role.equals("ADMIN")){
+            return false;
+        }
+        return true;
     }
 
 }

@@ -6,6 +6,7 @@ import com.example.exchangeratesbackend.entitie.Currency;
 import com.example.exchangeratesbackend.entitie.projection.CurrencyRateProjection;
 import com.example.exchangeratesbackend.entitie.projection.CurrencyValuesProjection;
 import com.example.exchangeratesbackend.error.ResourceConflict;
+import com.example.exchangeratesbackend.error.ResourceNotFound;
 import com.example.exchangeratesbackend.repository.CurrencyRepository;
 import com.example.exchangeratesbackend.repository.RateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class CurrencyService {
             result= new CurrencyValueDto(name, rates);
             return result;
         }else{
-            throw new NoSuchElementException();
+            throw new ResourceNotFound();
         }
     }
 
