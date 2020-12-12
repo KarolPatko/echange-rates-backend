@@ -31,11 +31,10 @@ public class RateService {
         rateRepository.save(newRate);
     }
 
-    public boolean deleteRate(long rateId){
+    public void deleteRate(long rateId){
         Optional<Rate> deleteRate = rateRepository.findById(rateId);
         if(deleteRate.isPresent()){
             rateRepository.deleteById(rateId);
-            return true;
         }else{
             throw new NoSuchElementException();
         }
