@@ -24,4 +24,9 @@ public class UserController {
     public void changeRole(@PathVariable Long userId, @RequestBody NewRoleDto newRoleDto){
         userService.changeRole(userId, newRoleDto);
     }
+
+    @DeleteMapping("{userId}")
+    public void deleteUser(@PathVariable Long userId){
+        userService.deleteUser(userId);
+    }
 }

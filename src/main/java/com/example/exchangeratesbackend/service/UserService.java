@@ -59,6 +59,16 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void deleteUser(Long userId){
+        User user = userRepository.getById(userId);
+
+        if(user == null){
+            throw new ResourceNotFound();
+        }
+
+        userRepository.delete(user);
+    }
+
     private boolean isKnownRole(String role){
         if(!role.equals("USER") && !role.equals("ADMIN")){
             return false;
