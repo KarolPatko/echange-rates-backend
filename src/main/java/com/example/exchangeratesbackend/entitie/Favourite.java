@@ -47,4 +47,9 @@ public class Favourite {
         this.userId = userId;
         this.currencyId = currencyId;
     }
+
+    public Favourite(Long userId, Long currencyId) {
+        this.userId = userId;
+        this.currencyId = currencyId;
+    }
 }
