@@ -53,7 +53,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private Authentication getUsernamePasswordAuthentication(String jwt) {
-        String token = jwt.replace("Bearer ","");
+        String token = jwt.replace(JwtProperties.TOKEN_PREFIX,"");
 
         String login = JWT.require(HMAC512(JwtProperties.SECRET.getBytes()))
                 .build()

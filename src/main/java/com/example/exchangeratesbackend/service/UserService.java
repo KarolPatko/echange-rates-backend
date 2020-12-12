@@ -45,7 +45,7 @@ public class UserService {
     }
 
     public void changeRole(Long userId, NewRoleDto newRoleDto){
-        User user = userRepository.getByUserId(userId);
+        User user = userRepository.getById(userId);
 
         if(user == null){
             throw new ResourceNotFound();
