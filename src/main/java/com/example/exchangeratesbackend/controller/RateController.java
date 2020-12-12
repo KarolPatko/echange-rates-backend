@@ -22,7 +22,7 @@ public class RateController {
     }
 
     @DeleteMapping("/{rateId}")
-    public void deleteRate(@PathVariable("rateId") Long rateId{
+    public void deleteRate(@PathVariable("rateId") Long rateId){
         rateService.deleteRate(rateId);
     }
 
