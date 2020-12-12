@@ -34,7 +34,7 @@ public class UserController {
         userService.changeRole(userId, newRoleDto);
     }
 
-    @DeleteMapping("{userId}")
+    @PostMapping("{userId}/delete")
     public void deleteUser(@PathVariable Long userId){
         userService.deleteUser(userId);
     }
