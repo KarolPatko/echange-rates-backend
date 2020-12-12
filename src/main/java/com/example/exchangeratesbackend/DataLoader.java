@@ -2,9 +2,12 @@ package com.example.exchangeratesbackend;
 
 import com.example.exchangeratesbackend.entitie.Currency;
 import com.example.exchangeratesbackend.entitie.Rate;
+import com.example.exchangeratesbackend.entitie.User;
 import com.example.exchangeratesbackend.repository.CurrencyRepository;
 import com.example.exchangeratesbackend.repository.RateRepository;
+import com.example.exchangeratesbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -14,13 +17,20 @@ import java.time.format.DateTimeFormatter;
 public class DataLoader {
     CurrencyRepository currencyRepository;
     RateRepository rateRepository;
+    UserRepository userRepository;
+    PasswordEncoder passwordEncoder;
 
     @Autowired
-    public DataLoader(CurrencyRepository currencyRepository, RateRepository rateRepository){
+    public DataLoader(CurrencyRepository currencyRepository, RateRepository rateRepository,
+                      UserRepository userRepository,
+                      PasswordEncoder passwordEncoder){
         this.currencyRepository = currencyRepository;
         this.rateRepository = rateRepository;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
         loadCurrency();
         loadRate();
+        loadUser();
     }
 
     private void loadCurrency(){
@@ -43,5 +53,27 @@ public class DataLoader {
         rate2.setCurrencyId(new Long(1));
         rate2.setValue(new Double(2));
         rateRepository.save(rate2);
+    }
+
+    private void loadUser(){
+        String password = passwordEncoder.encode("password");
+
+        User user1 = new User();
+        user1.setActive(true);
+        user1.setLastName("name");
+        user1.setName("lastName");
+        user1.setLogin("login");
+        user1.setRole("USER");
+        user1.setPassword(password);
+        userRepository.save(user1);
+
+        User user2 = new User();
+        user2.setActive(true);
+        user2.setLastName("name");
+        user2.setName("lastName");
+        user2.setLogin("login");
+        user2.setRole("ADMIN");
+        user2.setPassword(password);
+        userRepository.save(user2);
     }
 }
