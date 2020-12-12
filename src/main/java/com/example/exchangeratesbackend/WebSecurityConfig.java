@@ -30,6 +30,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        CorsConfiguration corsConfig = new CorsConfiguration();
+        corsConfig.addAllowedMethod(HttpMethod.DELETE);
+        corsConfig.addAllowedMethod(HttpMethod.POST);
+        corsConfig.addAllowedMethod(HttpMethod.GET);
+        corsConfig.addAllowedMethod(HttpMethod.PATCH);
+
         http.headers().frameOptions().disable().and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -44,7 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/currency").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/currency").hasRole("ADMIN")
                 .and()
-                .cors().configurationSource(req -> new CorsConfiguration().applyPermitDefaultValues());
+//                .cors().configurationSource(req -> new CorsConfiguration().applyPermitDefaultValues());
+                .cors().configurationSource(req -> corsConfig);
     }
 
     @Bean

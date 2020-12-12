@@ -43,4 +43,9 @@ public class UserController {
     public void changeActive(@PathVariable Long userId, @RequestBody NewActiveDto newActiveDto){
         userService.changeActive(userId, newActiveDto);
     }
+
+    @DeleteMapping
+    public String d(){
+        return "delete";
+    }
 }
