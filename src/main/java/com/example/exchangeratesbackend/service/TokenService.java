@@ -40,7 +40,7 @@ public class TokenService {
                     .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
                     .sign(HMAC512(SECRET.getBytes()));
 
-            String refreshToken = getAlphaNumericString(256);
+            String refreshToken = getAlphaNumericString(128);
 
             Token token = new Token();
             token.setJwt(jwt);
