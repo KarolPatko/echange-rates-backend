@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface CurrencyRepository extends JpaRepository<Currency, Long> {
-    @Query("SELECT c.name as name, r.value as value, r.date as date FROM Currency c JOIN Rate r ON c.id = r.currencyId")
+    @Query("SELECT c.name as name, r.value as value, r.date as date FROM Currency c JOIN Rate r ON c.id = r.currencyId ORDER BY date DESC")
     List<CurrencyRateProjection> getAllProjectedBy();
     Currency findByName(String name);
 }
