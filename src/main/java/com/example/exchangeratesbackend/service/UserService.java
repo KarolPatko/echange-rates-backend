@@ -71,7 +71,7 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public void changeActive(@PathVariable Long userId, @RequestBody NewActiveDto newActiveDto) {
+    public void changeActive(Long userId, NewActiveDto newActiveDto) {
         User user = userRepository.getById(userId);
 
         if(user == null){
