@@ -33,7 +33,7 @@ public class CurrencyService {
     public CurrencyValueDto getCurrency(Long currencyId){
         CurrencyValueDto result;
         String name;
-        ArrayList<CurrencyValuesProjection> rates;
+        List<CurrencyValuesProjection> rates;
         Optional<Currency> cr = currencyRepository.findById(currencyId);
         if(cr.isPresent()){
             name=cr.get().getName();

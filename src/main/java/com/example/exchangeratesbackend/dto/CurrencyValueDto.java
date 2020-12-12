@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CurrencyValueDto {
     private String name;
-    private ArrayList<CurrencyValuesProjection> rates;
+    private List<CurrencyValuesProjection> rates;
 
     public String getName() {
         return name;
@@ -18,18 +19,18 @@ public class CurrencyValueDto {
         this.name = name;
     }
 
-    public ArrayList<CurrencyValuesProjection> getRates() {
+    public List<CurrencyValuesProjection> getRates() {
         return rates;
     }
 
-    public void setRates(ArrayList<CurrencyValuesProjection> rates) {
+    public void setRates(List<CurrencyValuesProjection> rates) {
         this.rates = rates;
     }
 
     public CurrencyValueDto() {
     }
 
-    public CurrencyValueDto(String name, ArrayList<CurrencyValuesProjection> rates) {
+    public CurrencyValueDto(String name, List<CurrencyValuesProjection> rates) {
         this.name = name;
         this.rates = rates;
     }
