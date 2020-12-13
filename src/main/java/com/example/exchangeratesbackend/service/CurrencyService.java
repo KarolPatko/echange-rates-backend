@@ -3,6 +3,7 @@ package com.example.exchangeratesbackend.service;
 import com.example.exchangeratesbackend.dto.CurrencyValueDto;
 import com.example.exchangeratesbackend.dto.NewCurrencyDto;
 import com.example.exchangeratesbackend.entitie.Currency;
+import com.example.exchangeratesbackend.entitie.Rate;
 import com.example.exchangeratesbackend.entitie.projection.CurrencyRateProjection;
 import com.example.exchangeratesbackend.entitie.projection.CurrencyValuesProjection;
 import com.example.exchangeratesbackend.error.ResourceConflict;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CurrencyService {
@@ -27,7 +29,23 @@ public class CurrencyService {
     RateRepository rateRepository;
 
     public List<CurrencyRateProjection> getAllCurrencies(){
-        return currencyRepository.getAllProjectedBy();
+        List<Long> ids = currencyRepository.findCurrencyId();
+
+        List<Rate> rates = ids.stream().map(id -> rateRepository.getFirstByCurrencyIdOrderByDateDesc(id)).collect(Collectors.toList());
+
+        List<CurrencyRateProjection> currencyRate = rates.stream().map(rate -> addName(rate)).collect(Collectors.toList());
+
+        return currencyRate;
+    }
+
+    private CurrencyRateProjection addName(Rate rate){
+        CurrencyRateProjection currencyRateProjection = new CurrencyRateProjection();
+        currencyRateProjection.setDate(rate.getDate());
+        currencyRateProjection.setValue(rate.getValue());
+        String name = currencyRepository.findNameById(rate.getCurrencyId());
+        currencyRateProjection.setName(name);
+
+        return currencyRateProjection;
     }
 
     public CurrencyValueDto getCurrency(Long currencyId){

@@ -13,4 +13,6 @@ public interface RateRepository extends JpaRepository<Rate, Long> {
     @Query("SELECT r.value as value, r.date as date FROM Rate r WHERE r.currencyId=:currId")
     ArrayList<CurrencyValuesProjection> findAllCurrencyValuesProjectedByCurrencyId(@Param("currId") long currencyId);
     Rate findByCurrencyIdAndDate(Long currencyId, LocalDate date);
+
+    Rate getFirstByCurrencyIdOrderByDateDesc(Long currencyId);
 }

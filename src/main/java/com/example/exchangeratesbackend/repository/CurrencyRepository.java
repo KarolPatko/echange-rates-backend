@@ -10,7 +10,13 @@ import java.util.List;
 
 @Repository
 public interface CurrencyRepository extends JpaRepository<Currency, Long> {
-    @Query("SELECT c.name as name, r.value as value, r.date as date FROM Currency c JOIN Rate r ON c.id = r.currencyId ORDER BY date DESC")
+    @Query("SELECT c.name as name, r.value as value, r.date as date FROM Currency c JOIN Rate r ON c.id = r.currencyId")
     List<CurrencyRateProjection> getAllProjectedBy();
     Currency findByName(String name);
+
+    @Query("SELECT DISTINCT r.currencyId FROM Rate r")
+    List<Long> findCurrencyId();
+
+    @Query("SELECT c.name FROM Currency c WHERE c.id = ?1")
+    String findNameById(Long currencyId);
 }

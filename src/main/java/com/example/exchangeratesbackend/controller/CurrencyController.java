@@ -2,6 +2,7 @@ package com.example.exchangeratesbackend.controller;
 
 import com.example.exchangeratesbackend.dto.CurrencyValueDto;
 import com.example.exchangeratesbackend.dto.NewCurrencyDto;
+import com.example.exchangeratesbackend.entitie.Rate;
 import com.example.exchangeratesbackend.entitie.projection.CurrencyRateProjection;
 import com.example.exchangeratesbackend.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;

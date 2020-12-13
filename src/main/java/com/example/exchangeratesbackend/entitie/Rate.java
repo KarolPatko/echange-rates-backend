@@ -15,7 +15,7 @@ public class Rate {
     private Long id;
     private Long currencyId;
     private Double value;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     public Long getId() {

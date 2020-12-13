@@ -34,25 +34,40 @@ public class DataLoader {
     }
 
     private void loadCurrency(){
-        Currency currency = new Currency();
-        currency.setName("PLN");
-        currencyRepository.save(currency);
+        Currency currency1 = new Currency();
+        currency1.setName("PLN");
+        currencyRepository.save(currency1);
+
+        Currency currency2 = new Currency();
+        currency2.setName("GBP");
+        currencyRepository.save(currency2);
+
+        Currency currency3 = new Currency();
+        currency3.setName("WUR");
+        currencyRepository.save(currency3);
     }
 
     private void loadRate(){
         Rate rate1 = new Rate();
-        LocalDate localDate1 = LocalDate.parse("2020-12-12 13:40", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        LocalDate localDate1 = LocalDate.parse("2020-12-12", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate1.setDate(localDate1);
         rate1.setCurrencyId(new Long(1));
         rate1.setValue(new Double(1));
         rateRepository.save(rate1);
 
         Rate rate2 = new Rate();
-        LocalDate localDate2 = LocalDate.parse("2020-12-12 14:40", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        LocalDate localDate2 = LocalDate.parse("2020-12-13", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate2.setDate(localDate2);
         rate2.setCurrencyId(new Long(1));
         rate2.setValue(new Double(2));
         rateRepository.save(rate2);
+
+        Rate rate3 = new Rate();
+        LocalDate localDate3 = LocalDate.parse("2020-12-14", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        rate3.setDate(localDate3);
+        rate3.setCurrencyId(new Long(1));
+        rate3.setValue(new Double(2));
+        rateRepository.save(rate3);
     }
 
     private void loadUser(){
