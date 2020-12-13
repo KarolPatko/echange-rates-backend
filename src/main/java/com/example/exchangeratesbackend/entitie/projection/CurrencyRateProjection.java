@@ -3,9 +3,18 @@ package com.example.exchangeratesbackend.entitie.projection;
 import java.time.LocalDate;
 
 public class CurrencyRateProjection {
+    Long currencyId;
     String name;
     Double value;
     LocalDate date;
+
+    public Long getCurrencyId() {
+        return currencyId;
+    }
+
+    public void setCurrencyId(Long currencyId) {
+        this.currencyId = currencyId;
+    }
 
     public String getName() {
         return name;
@@ -34,7 +43,8 @@ public class CurrencyRateProjection {
     public CurrencyRateProjection() {
     }
 
-    public CurrencyRateProjection(String name, Double value, LocalDate date) {
+    public CurrencyRateProjection(Long currencyId, String name, Double value, LocalDate date) {
+        this.currencyId = currencyId;
         this.name = name;
         this.value = value;
         this.date = date;

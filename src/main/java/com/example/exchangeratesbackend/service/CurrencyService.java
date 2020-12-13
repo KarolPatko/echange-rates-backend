@@ -39,6 +39,7 @@ public class CurrencyService {
     private CurrencyRateProjection addName(Currency currency){
         CurrencyRateProjection currencyRateProjection = new CurrencyRateProjection();
         currencyRateProjection.setName(currency.getName());
+        currencyRateProjection.setCurrencyId(currency.getId());
         Rate newestRate = rateRepository.getFirstByCurrencyIdOrderByDateDesc(currency.getId());
 
         if(newestRate != null){
