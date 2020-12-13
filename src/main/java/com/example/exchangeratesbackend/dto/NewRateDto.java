@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class NewRateDto {
     private String name;
     private Double value;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     public String getName() {
