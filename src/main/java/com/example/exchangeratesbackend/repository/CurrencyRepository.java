@@ -14,8 +14,7 @@ public interface CurrencyRepository extends JpaRepository<Currency, Long> {
     List<CurrencyRateProjection> getAllProjectedBy();
     Currency findByName(String name);
 
-    @Query("SELECT DISTINCT r.currencyId FROM Rate r")
-    List<Long> findCurrencyId();
+    List<Currency> findAll();
 
     @Query("SELECT c.name FROM Currency c WHERE c.id = ?1")
     String findNameById(Long currencyId);

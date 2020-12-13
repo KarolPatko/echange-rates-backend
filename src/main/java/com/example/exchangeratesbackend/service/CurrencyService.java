@@ -29,21 +29,26 @@ public class CurrencyService {
     RateRepository rateRepository;
 
     public List<CurrencyRateProjection> getAllCurrencies(){
-        List<Long> ids = currencyRepository.findCurrencyId();
+        List<Currency> currencies = currencyRepository.findAll();
 
-        List<Rate> rates = ids.stream().map(id -> rateRepository.getFirstByCurrencyIdOrderByDateDesc(id)).collect(Collectors.toList());
-
-        List<CurrencyRateProjection> currencyRate = rates.stream().map(rate -> addName(rate)).collect(Collectors.toList());
+        List<CurrencyRateProjection> currencyRate = currencies.stream().map(currency -> addName(currency)).collect(Collectors.toList());
 
         return currencyRate;
     }
 
-    private CurrencyRateProjection addName(Rate rate){
+    private CurrencyRateProjection addName(Currency currency){
         CurrencyRateProjection currencyRateProjection = new CurrencyRateProjection();
-        currencyRateProjection.setDate(rate.getDate());
-        currencyRateProjection.setValue(rate.getValue());
-        String name = currencyRepository.findNameById(rate.getCurrencyId());
-        currencyRateProjection.setName(name);
+        currencyRateProjection.setName(currency.getName());
+        Rate newestRate = rateRepository.getFirstByCurrencyIdOrderByDateDesc(currency.getId());
+
+        if(newestRate != null){
+            currencyRateProjection.setValue(newestRate.getValue());
+            currencyRateProjection.setDate(newestRate.getDate());
+        }
+        else{
+            currencyRateProjection.setValue(null);
+            currencyRateProjection.setDate(null);
+        }
 
         return currencyRateProjection;
     }
