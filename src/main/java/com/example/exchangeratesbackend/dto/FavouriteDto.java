@@ -3,8 +3,12 @@ package com.example.exchangeratesbackend.dto;
 public class FavouriteDto {
     private boolean isFavourite;
 
-    public boolean isFavourite() {
+    public boolean getIsFavourite() {
         return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
     }
 
     public FavouriteDto() {

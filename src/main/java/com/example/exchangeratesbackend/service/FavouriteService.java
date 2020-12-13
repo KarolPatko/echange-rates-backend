@@ -54,7 +54,8 @@ public class FavouriteService {
             throw new NoSuchElementException("Nie ma takowego pośród nas");
         }
         Optional<Favourite> checkIfPresent = favouriteRepository.findByCurrencyIdAndAndUserId(currencyId, userId);
-        if(favouriteDto.isFavourite()){
+        System.out.println(checkIfPresent.isPresent()+ ""+favouriteDto.getIsFavourite());
+        if(favouriteDto.getIsFavourite()){
             if(!checkIfPresent.isPresent()){
                 favouriteRepository.save(new Favourite(userId, currencyId));
             }
