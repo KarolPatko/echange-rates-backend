@@ -2,6 +2,7 @@ package com.example.exchangeratesbackend.controller;
 
 import com.example.exchangeratesbackend.dto.FavouriteDto;
 import com.example.exchangeratesbackend.entitie.Favourite;
+import com.example.exchangeratesbackend.entitie.projection.CurrencyRateProjection;
 import com.example.exchangeratesbackend.service.FavouriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,11 @@ public class FavouriteController {
     @GetMapping(path = "/currencyId")
     public List<Long> getAllFavouriteCurrencies(@RequestHeader("Authorization") String authorization){
         return favouriteService.getAllFavouriteCurrencies(authorization);
+    }
+
+    @GetMapping(path = "/currencies")
+    public List<CurrencyRateProjection> getAllFavouriteCurrenciesObject(@RequestHeader("Authorization") String authorization){
+        return favouriteService.getAllFavouriteCurrenciesObject(authorization);
     }
 
     @PostMapping("/{currencyId}")

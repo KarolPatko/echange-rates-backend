@@ -14,8 +14,11 @@ import java.util.Optional;
 public interface FavouriteRepository extends JpaRepository<Favourite, Long> {
 
 
+    @Query("SELECT f.currencyId FROM Favourite f WHERE f.userId = ?1")
+    List<Long> findCurrencyIdByUserId(Long userId);
 
-    List<Favourite> findCurrencyIdByUserId(Long userId);
+
+    List<Favourite> findByUserId(Long userId);
 
 
     Optional<Favourite> findByCurrencyIdAndAndUserId(Long currencyId, Long userId);
