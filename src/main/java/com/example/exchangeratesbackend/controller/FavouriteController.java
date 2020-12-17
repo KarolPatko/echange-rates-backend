@@ -1,6 +1,7 @@
 package com.example.exchangeratesbackend.controller;
 
 import com.example.exchangeratesbackend.dto.FavouriteDto;
+import com.example.exchangeratesbackend.entitie.Favourite;
 import com.example.exchangeratesbackend.service.FavouriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface FavouriteRepository extends JpaRepository<Favourite, Long> {
 
 
-    List<Long> findCurrencyIdByUserId(Long userId);
+    List<Favourite> findCurrencyIdByUserId(Long userId);
 
     Optional<Favourite> findByCurrencyIdAndAndUserId(Long currencyId, Long userId);
 }

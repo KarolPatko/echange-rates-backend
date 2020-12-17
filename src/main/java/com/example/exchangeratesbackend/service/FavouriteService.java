@@ -35,11 +35,13 @@ public class FavouriteService {
         }catch (Exception e){
             throw new NoSuchElementException("Nie ma takowego pośród nas");
         }
-
-
-
-
-        return favouriteRepository.findCurrencyIdByUserId(userId);
+        List<Long> result = new ArrayList<>();
+        List<Favourite> favouritesList= favouriteRepository.findCurrencyIdByUserId(userId);
+        for(int i=0;i<favouritesList.size();i++)
+        {
+            result.add(favouritesList.get(i).getCurrencyId());
+        }
+        return result;
 
     }
 
@@ -54,7 +56,7 @@ public class FavouriteService {
             throw new NoSuchElementException("Nie ma takowego pośród nas");
         }
         Optional<Favourite> checkIfPresent = favouriteRepository.findByCurrencyIdAndAndUserId(currencyId, userId);
-        if(favouriteDto.isFavourite()){
+        if(favouriteDto.getIsFavourite()){
             if(!checkIfPresent.isPresent()){
                 favouriteRepository.save(new Favourite(userId, currencyId));
             }
