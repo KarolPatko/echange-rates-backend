@@ -7,6 +7,7 @@ public class FavouriteDto {
         return isFavourite;
     }
 
+
     public void setIsFavourite(boolean favourite) {
         isFavourite = favourite;
     }
