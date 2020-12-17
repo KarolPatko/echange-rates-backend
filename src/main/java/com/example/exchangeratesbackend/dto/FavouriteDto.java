@@ -7,7 +7,8 @@ public class FavouriteDto {
         return isFavourite;
     }
 
-    public void setFavourite(boolean favourite) {
+
+    public void setIsFavourite(boolean favourite) {
         isFavourite = favourite;
     }
 
@@ -16,5 +17,12 @@ public class FavouriteDto {
 
     public FavouriteDto(boolean isFavourite) {
         this.isFavourite = isFavourite;
+    }
+
+    @Override
+    public String toString() {
+        return "FavouriteDto{" +
+                "isFavourite=" + isFavourite +
+                '}';
     }
 }
