@@ -189,8 +189,8 @@ public class DataLoader {
 
         User user1 = new User();
         user1.setActive(true);
-        user1.setLastName("name");
-        user1.setName("lastName");
+        user1.setLastName("lastName");
+        user1.setName("name");
         user1.setLogin("user");
         user1.setRole("USER");
         user1.setPassword(password);
@@ -198,8 +198,8 @@ public class DataLoader {
 
         User user2 = new User();
         user2.setActive(true);
-        user2.setLastName("name");
-        user2.setName("lastName");
+        user2.setLastName("lastName");
+        user2.setName("name");
         user2.setLogin("admin");
         user2.setRole("ADMIN");
         user2.setPassword(password);
