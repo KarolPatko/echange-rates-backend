@@ -61,21 +61,21 @@ public class DataLoader {
         LocalDate localDate11 = LocalDate.parse("2020-12-14", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate11.setDate(localDate11);
         rate11.setCurrencyId(currency1.getId());
-        rate11.setValue(new Double(100));
+        rate11.setValue(new Double(11));
         rateRepository.save(rate11);
 
         Rate rate12 = new Rate();
         LocalDate localDate12 = LocalDate.parse("2020-12-15", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate12.setDate(localDate12);
         rate12.setCurrencyId(currency1.getId());
-        rate12.setValue(new Double(101));
+        rate12.setValue(new Double(10));
         rateRepository.save(rate12);
 
         Rate rate13 = new Rate();
         LocalDate localDate13 = LocalDate.parse("2020-12-16", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate13.setDate(localDate13);
         rate13.setCurrencyId(currency1.getId());
-        rate13.setValue(new Double(99));
+        rate13.setValue(new Double(9));
         rateRepository.save(rate13);
 
         Rate rate21 = new Rate();
@@ -96,7 +96,7 @@ public class DataLoader {
         LocalDate localDate23 = LocalDate.parse("2020-12-16", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate23.setDate(localDate23);
         rate23.setCurrencyId(currency2.getId());
-        rate23.setValue(new Double(1.8));
+        rate23.setValue(new Double(18));
         rateRepository.save(rate23);
 
         Rate rate31 = new Rate();
@@ -124,7 +124,7 @@ public class DataLoader {
         LocalDate localDate41 = LocalDate.parse("2020-12-14", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate41.setDate(localDate41);
         rate41.setCurrencyId(currency4.getId());
-        rate41.setValue(new Double(1.5));
+        rate41.setValue(new Double(15));
         rateRepository.save(rate41);
 
         Rate rate42 = new Rate();
@@ -138,28 +138,28 @@ public class DataLoader {
         LocalDate localDate43 = LocalDate.parse("2020-12-16", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate43.setDate(localDate43);
         rate43.setCurrencyId(currency4.getId());
-        rate43.setValue(new Double(0.5));
+        rate43.setValue(new Double(5));
         rateRepository.save(rate43);
 
         Rate rate51 = new Rate();
         LocalDate localDate51 = LocalDate.parse("2020-12-14", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate51.setDate(localDate51);
         rate51.setCurrencyId(currency5.getId());
-        rate51.setValue(new Double(100));
+        rate51.setValue(new Double(10));
         rateRepository.save(rate51);
 
         Rate rate52 = new Rate();
         LocalDate localDate52 = LocalDate.parse("2020-12-15", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate52.setDate(localDate52);
         rate52.setCurrencyId(currency5.getId());
-        rate52.setValue(new Double(97));
+        rate52.setValue(new Double(9));
         rateRepository.save(rate52);
 
         Rate rate53 = new Rate();
         LocalDate localDate53 = LocalDate.parse("2020-12-16", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate53.setDate(localDate53);
         rate53.setCurrencyId(currency5.getId());
-        rate53.setValue(new Double(90));
+        rate53.setValue(new Double(9));
         rateRepository.save(rate53);
 
         Rate rate61 = new Rate();
@@ -173,7 +173,7 @@ public class DataLoader {
         LocalDate localDate62 = LocalDate.parse("2020-12-15", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         rate62.setDate(localDate62);
         rate62.setCurrencyId(currency6.getId());
-        rate62.setValue(new Double(1.7));
+        rate62.setValue(new Double(17));
         rateRepository.save(rate62);
 
         Rate rate63 = new Rate();
